@@ -1,0 +1,10 @@
+name: Automatic Differentiation
+version: 1.0.0
+date: 2022-07-15
+author: Steven Waldrip <https://mathsfromnothing.cf>
+maintainer: Steven Waldrip <https://mathsfromnothing.cf>
+title: Automatic Differentiation for octave see:
+https://mathsfromnothing.cf/scalar-functions-vector-matrix-and-tensor-functions/
+for documentation.
+categories: package
+depends: octave (>= 4.0.0)
