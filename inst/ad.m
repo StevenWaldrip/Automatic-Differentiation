@@ -3120,3 +3120,5 @@ function d=difsizederiv(nfoutput,nvars,sizevars,derivf)
     end
   end
 endfunction
+
+%!test adtest
