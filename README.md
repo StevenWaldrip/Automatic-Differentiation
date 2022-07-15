@@ -7,7 +7,7 @@ It can handle the basic operators, most core functions, matrix factorizations, a
 
 https://mathsfromnothing.cf/scalar-functions-vector-matrix-and-tensor-functions/
 
-for a complete list. The code is in a single file ad.m that can be downloaded from the ‘implementation and how to use it’ section of the page linked above or ad.m from the src directory. To test it copy adtest.m into the same directory, it should test all of the code paths. It currently does not support complex numbers. They can be used but the results may be incorect.
+for a complete list and a detailed discription of how it works. The code is in a single file ad.m that can be downloaded from the ‘implementation and how to use it’ section of the page linked above or ad.m from the src directory. To test it copy adtest.m into the same directory, it should test all of the code paths. It currently does not support complex numbers. They can be used but the results may be incorect.
 
 To use it copy ad.m into a directory. Open that directory in octave. To find the derivative of a scalar function at several locations the following code can be used
 ```
