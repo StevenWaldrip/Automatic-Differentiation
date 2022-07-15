@@ -6,4 +6,4 @@ maintainer: Steven Waldrip <https://mathsfromnothing.cf>
 title: Automatic Differentiation for Octave
 Description: Automatic Differentiation for Octave see: https://mathsfromnothing.cf/scalar-functions-vector-matrix-and-tensor-functions/ for documentation.
 categories: package
-depends: octave (>= 4.0.0)
+depends: octave (>= 5.1.0)
