@@ -1,5 +1,5 @@
 function adtest
-clear all;
+clear functions;
 
 
 ##rand("state",0);
