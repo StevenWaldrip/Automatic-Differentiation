@@ -2,7 +2,7 @@ function adtest
 clear functions;
 
 
-##rand("state",0);
+rand("state",0);
 mnpq=[3 4 3 4;4 3 4 3;1 1 1 1;
 1 4 3 4;3 1 3 4;3 4 1 4;3 4 3 1;
 1 3 4 3;4 1 4 3;4 3 1 3;4 3 4 1;
@@ -141,15 +141,15 @@ for k=1:size(mnpq,1)
   dCdAt=ad.fd(@(A)f(A,B),A);
   dCdBt=ad.fd(@(B)f(A,B),B);
   assert(C.value,Ct);
-  assert(dCdA,dCdAt,-1e-3);
-  assert(dCdB,dCdBt,-1e-3);
+  assert(dCdA,dCdAt,-1e-2);
+  assert(dCdB,dCdBt,-1e-2);
   C=f(AA,B);
   dCdA=C.diff(AA);
   assert(C.value,Ct);
-  assert(dCdA,dCdAt,-1e-3);
+  assert(dCdA,dCdAt,-1e-2);
   C=f(A,BB);
   dCdB=C.diff(BB);
-  assert(dCdB,dCdBt,-1e-3);
+  assert(dCdB,dCdBt,-1e-2);
 end
 # atan2
 for k=1:size(mnpq,1)
@@ -426,15 +426,15 @@ for k=1:size(mnpq,1)
   dCdAt=ad.fd(@(A)f(A,B),A);
   dCdBt=ad.fd(@(B)f(A,B),B);
   assert(C.value,Ct);
-  assert(dCdA,dCdAt,-1e-3);
-  assert(dCdB,dCdBt,-1e-3);
+  assert(dCdA,dCdAt,-1e-2);
+  assert(dCdB,dCdBt,-1e-2);
   C=f(AA,B);
   dCdA=C.diff(AA);
   assert(C.value,Ct);
-  assert(dCdA,dCdAt,-1e-3);
+  assert(dCdA,dCdAt,-1e-2);
   C=f(A,BB);
   dCdB=C.diff(BB);
-  assert(dCdB,dCdBt,-1e-3);
+  assert(dCdB,dCdBt,-1e-2);
 end
 ## mrdivide
 mnpq=[4 4 4 4;2 4 3 4;
@@ -452,15 +452,15 @@ for k=1:size(mnpq,1)
   dCdAt=ad.fd(@(A)f(A,B),A);
   dCdBt=ad.fd(@(B)f(A,B),B);
   assert(C.value,Ct,1e-10);
-  assert(dCdA,dCdAt,-1e-3);
-  assert(dCdB,dCdBt,-1e-3);
+  assert(dCdA,dCdAt,-1e-2);
+  assert(dCdB,dCdBt,-1e-2);
   C=f(AA,B);
   dCdA=C.diff(AA);
   assert(C.value,Ct,1e-10);
-  assert(dCdA,dCdAt,-1e-3);
+  assert(dCdA,dCdAt,-1e-2);
   C=f(A,BB);
   dCdB=C.diff(BB);
-  assert(dCdB,dCdBt,-1e-3);
+  assert(dCdB,dCdBt,-1e-2);
 end
 ## mldivide
 mnpq=[4 4 4 4;4 2 4 3;
@@ -478,15 +478,15 @@ for k=1:size(mnpq,1)
   dCdAt=ad.fd(@(A)f(A,B),A);
   dCdBt=ad.fd(@(B)f(A,B),B);
   assert(C.value,Ct,1e-10);
-  assert(dCdA,dCdAt,-1e-3);
-  assert(dCdB,dCdBt,-1e-3);
+  assert(dCdA,dCdAt,-1e-2);
+  assert(dCdB,dCdBt,-1e-2);
   C=f(AA,B);
   dCdA=C.diff(AA);
   assert(C.value,Ct,1e-10);
-  assert(dCdA,dCdAt,1e-3);
+  assert(dCdA,dCdAt,-1e-2);
   C=f(A,BB);
   dCdB=C.diff(BB);
-  assert(dCdB,dCdBt,1e-3);
+  assert(dCdB,dCdBt,-1e-2);
 end
 ## mpower
 ## Non symetric matrix issues caused by complex normilization of eigvec
@@ -885,10 +885,10 @@ for k=1:size(mn,1)
   dQdAt=ad.fd(@(AA)nthargout(1:2,@qr,AA){1},AA.value);
   dRdAt=ad.fd(@(AA)nthargout(1:2,@qr,AA){2},AA.value);
   [Q R]=qr(AA);
-  assert(Q.value,Qt,-1e-3);
-  assert(R.value,Rt,-1e-3);
-  assert(Q.diff(AA),dQdAt,-1e-3);
-  assert(R.diff(AA),dRdAt,-1e-3);
+  assert(Q.value,Qt,-1e-2);
+  assert(R.value,Rt,-1e-2);
+  assert(Q.diff(AA),dQdAt,-1e-2);
+  assert(R.diff(AA),dRdAt,-1e-2);
 end
 mn=[2 2;1 1];
 #eig
@@ -959,8 +959,8 @@ dUdAt=ad.fd(@(A)nthargout(1:2,@schur,A){1},A.value);
 dSdAt=ad.fd(@(A)nthargout(1:2,@schur,A){2},A.value);
 assert(U.value,Ut,-1e-2);
 assert(S.value,St,-1e-2);
-assert(U.diff(A),dUdAt,-1e-3);
-assert(S.diff(A),dSdAt,-1e-3);
+assert(U.diff(A),dUdAt,-1e-2);
+assert(S.diff(A),dSdAt,-1e-2);
 ##rsf2csf
 [Ur Sr]=rsf2csf(U,S);
 [Urt Srt]=rsf2csf(Ut,St);
@@ -968,8 +968,8 @@ D=Ur*Sr*Ur';
 Dt=Urt*Srt*Urt';
 E=Ur'*Ur;
 Et=Urt'*Urt;
-assert(D.value,Dt,1e-2);
-assert(E.value,Et,1e-2);
+assert(D.value,Dt,1e-6);
+assert(E.value,Et,1e-6);
 ##norm
 A=rand(3);
 AA=ad(A);
