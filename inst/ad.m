@@ -1019,13 +1019,14 @@ classdef ad<handle
       end
     endfunction
 
-    function c=subsref(a,s)
+    function varargout=subsref(a,s)
       sorig=s;
       s=sorig(1);
       try
         s.type=="()";
       catch
         c=builtin('subsref',a,sorig);
+        varargout{1}=c;
         return
       end
       if s.type=="()"
@@ -1048,6 +1049,7 @@ classdef ad<handle
       else
         c=builtin('subsref',a,sorig);
       end
+      varargout{1}=c;
     endfunction
 
     function c=subsasgn(a,s,b)
